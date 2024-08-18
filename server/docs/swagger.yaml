@@ -800,6 +800,137 @@ definitions:
         type: array
     type: object
   request.AutoCode:
+    properties:
+      abbreviation:
+        description: Struct简称
+        example: Struct简称
+        type: string
+      autoCreateApiToSql:
+        description: 是否自动创建api
+        example: false
+        type: boolean
+      autoCreateBtnAuth:
+        description: 是否自动创建按钮权限
+        example: false
+        type: boolean
+      autoCreateMenuToSql:
+        description: 是否自动创建menu
+        example: false
+        type: boolean
+      autoCreateResource:
+        description: 是否自动创建资源标识
+        example: false
+        type: boolean
+      autoMigrate:
+        description: 是否自动迁移表结构
+        example: false
+        type: boolean
+      businessDB:
+        description: 业务数据库
+        example: 业务数据库
+        type: string
+      description:
+        description: Struct中文名称
+        example: Struct中文名称
+        type: string
+      fields:
+        items:
+          $ref: '#/definitions/request.AutoCodeField'
+        type: array
+      gvaModel:
+        description: 是否使用gva默认Model
+        example: false
+        type: boolean
+      humpPackageName:
+        description: go文件名称
+        example: go文件名称
+        type: string
+      package:
+        type: string
+      packageName:
+        description: 文件名称
+        example: 文件名称
+        type: string
+      primaryField:
+        $ref: '#/definitions/request.AutoCodeField'
+      structName:
+        description: Struct名称
+        example: Struct名称
+        type: string
+      tableName:
+        description: 表名
+        example: 表名
+        type: string
+    type: object
+  request.AutoCodeField:
+    properties:
+      checkDataSource:
+        description: 是否检查数据源
+        type: boolean
+      clearable:
+        description: 是否可清空
+        type: boolean
+      columnName:
+        description: 数据库字段
+        type: string
+      comment:
+        description: 数据库字段描述
+        type: string
+      dataSource:
+        allOf:
+        - $ref: '#/definitions/request.DataSource'
+        description: 数据源
+      dataTypeLong:
+        description: 数据库字段长度
+        type: string
+      defaultValue:
+        description: 是否必填
+        type: string
+      desc:
+        description: 是否前端详情
+        type: boolean
+      dictType:
+        description: 字典
+        type: string
+      errorText:
+        description: 校验失败文字
+        type: string
+      fieldDesc:
+        description: 中文名
+        type: string
+      fieldIndexType:
+        description: 索引类型
+        type: string
+      fieldJson:
+        description: FieldJson
+        type: string
+      fieldName:
+        description: Field名
+        type: string
+      fieldSearchHide:
+        description: 是否隐藏查询条件
+        type: boolean
+      fieldSearchType:
+        description: 搜索条件
+        type: string
+      fieldType:
+        description: Field数据类型
+        type: string
+      form:
+        description: Front           bool        `json:"front"`           // 是否前端可见
+        type: boolean
+      primaryKey:
+        description: 是否主键
+        type: boolean
+      require:
+        description: 是否必填
+        type: boolean
+      sort:
+        description: 是否增加排序
+        type: boolean
+      table:
+        description: 是否前端表格列
+        type: boolean
     type: object
   request.CasbinInReceive:
     properties:
@@ -827,6 +958,18 @@ definitions:
         type: string
       password:
         description: 密码
+        type: string
+    type: object
+  request.DataSource:
+    properties:
+      association:
+        description: 关联关系 1 一对一 2 一对多
+        type: integer
+      label:
+        type: string
+      table:
+        type: string
+      value:
         type: string
     type: object
   request.Empty:
@@ -1812,7 +1955,7 @@ paths:
       tags:
       - SysApi
   /api/getApiGroups:
-    post:
+    get:
       consumes:
       - application/json
       produces:

@@ -323,7 +323,7 @@
             }
         },
         "/api/getApiGroups": {
-            "post": {
+            "get": {
                 "security": [
                     {
                         "ApiKeyAuth": []
@@ -6872,7 +6872,183 @@
             }
         },
         "request.AutoCode": {
-            "type": "object"
+            "type": "object",
+            "properties": {
+                "abbreviation": {
+                    "description": "Struct简称",
+                    "type": "string",
+                    "example": "Struct简称"
+                },
+                "autoCreateApiToSql": {
+                    "description": "是否自动创建api",
+                    "type": "boolean",
+                    "example": false
+                },
+                "autoCreateBtnAuth": {
+                    "description": "是否自动创建按钮权限",
+                    "type": "boolean",
+                    "example": false
+                },
+                "autoCreateMenuToSql": {
+                    "description": "是否自动创建menu",
+                    "type": "boolean",
+                    "example": false
+                },
+                "autoCreateResource": {
+                    "description": "是否自动创建资源标识",
+                    "type": "boolean",
+                    "example": false
+                },
+                "autoMigrate": {
+                    "description": "是否自动迁移表结构",
+                    "type": "boolean",
+                    "example": false
+                },
+                "businessDB": {
+                    "description": "业务数据库",
+                    "type": "string",
+                    "example": "业务数据库"
+                },
+                "description": {
+                    "description": "Struct中文名称",
+                    "type": "string",
+                    "example": "Struct中文名称"
+                },
+                "fields": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/request.AutoCodeField"
+                    }
+                },
+                "gvaModel": {
+                    "description": "是否使用gva默认Model",
+                    "type": "boolean",
+                    "example": false
+                },
+                "humpPackageName": {
+                    "description": "go文件名称",
+                    "type": "string",
+                    "example": "go文件名称"
+                },
+                "package": {
+                    "type": "string"
+                },
+                "packageName": {
+                    "description": "文件名称",
+                    "type": "string",
+                    "example": "文件名称"
+                },
+                "primaryField": {
+                    "$ref": "#/definitions/request.AutoCodeField"
+                },
+                "structName": {
+                    "description": "Struct名称",
+                    "type": "string",
+                    "example": "Struct名称"
+                },
+                "tableName": {
+                    "description": "表名",
+                    "type": "string",
+                    "example": "表名"
+                }
+            }
+        },
+        "request.AutoCodeField": {
+            "type": "object",
+            "properties": {
+                "checkDataSource": {
+                    "description": "是否检查数据源",
+                    "type": "boolean"
+                },
+                "clearable": {
+                    "description": "是否可清空",
+                    "type": "boolean"
+                },
+                "columnName": {
+                    "description": "数据库字段",
+                    "type": "string"
+                },
+                "comment": {
+                    "description": "数据库字段描述",
+                    "type": "string"
+                },
+                "dataSource": {
+                    "description": "数据源",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/request.DataSource"
+                        }
+                    ]
+                },
+                "dataTypeLong": {
+                    "description": "数据库字段长度",
+                    "type": "string"
+                },
+                "defaultValue": {
+                    "description": "是否必填",
+                    "type": "string"
+                },
+                "desc": {
+                    "description": "是否前端详情",
+                    "type": "boolean"
+                },
+                "dictType": {
+                    "description": "字典",
+                    "type": "string"
+                },
+                "errorText": {
+                    "description": "校验失败文字",
+                    "type": "string"
+                },
+                "fieldDesc": {
+                    "description": "中文名",
+                    "type": "string"
+                },
+                "fieldIndexType": {
+                    "description": "索引类型",
+                    "type": "string"
+                },
+                "fieldJson": {
+                    "description": "FieldJson",
+                    "type": "string"
+                },
+                "fieldName": {
+                    "description": "Field名",
+                    "type": "string"
+                },
+                "fieldSearchHide": {
+                    "description": "是否隐藏查询条件",
+                    "type": "boolean"
+                },
+                "fieldSearchType": {
+                    "description": "搜索条件",
+                    "type": "string"
+                },
+                "fieldType": {
+                    "description": "Field数据类型",
+                    "type": "string"
+                },
+                "form": {
+                    "description": "Front           bool        `json:\"front\"`           // 是否前端可见",
+                    "type": "boolean"
+                },
+                "primaryKey": {
+                    "description": "是否主键",
+                    "type": "boolean"
+                },
+                "require": {
+                    "description": "是否必填",
+                    "type": "boolean"
+                },
+                "sort": {
+                    "description": "是否增加排序",
+                    "type": "boolean"
+                },
+                "table": {
+                    "description": "是否前端表格列",
+                    "type": "boolean"
+                }
+            }
         },
         "request.CasbinInReceive": {
             "type": "object",
@@ -6911,6 +7087,24 @@
                 },
                 "password": {
                     "description": "密码",
+                    "type": "string"
+                }
+            }
+        },
+        "request.DataSource": {
+            "type": "object",
+            "properties": {
+                "association": {
+                    "description": "关联关系 1 一对一 2 一对多",
+                    "type": "integer"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "table": {
+                    "type": "string"
+                },
+                "value": {
                     "type": "string"
                 }
             }

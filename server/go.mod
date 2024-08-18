@@ -19,6 +19,7 @@ require (
 	github.com/gookit/color v1.5.4
 	github.com/huaweicloud/huaweicloud-sdk-go-obs v3.21.8+incompatible
 	github.com/jordan-wright/email v0.0.0-20200824153738-3f5bafa1cd84
+	github.com/lib/pq v1.10.2
 	github.com/mholt/archiver/v4 v4.0.0-alpha.8
 	github.com/mojocn/base64Captcha v1.3.6
 	github.com/otiai10/copy v1.7.0
